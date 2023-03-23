@@ -64,7 +64,7 @@ def test_count_of_all_products(browser):
     elements = browser.find_elements(by=By.CSS_SELECTOR, value="[id='rz-shop-content'] ul li")
 
     assert len(elements) == 17, "Unexpected count of products"
-@pytest.mark.xfail(reason="Wait for fix bug")
+
 def test_right_way(browser):
     """
     Test case TC-4
@@ -87,7 +87,7 @@ def test_right_way(browser):
 
     browser.find_element(by=By.CSS_SELECTOR, value="a.button.checkout").click()
     WebDriverWait(browser, timeout=10, poll_frequency=1).until(
-        EC.url_to_be("https://test.qa.studio/?page_id=10"))
+        EC.url_to_be("https://test.qa.studio/checkout/"))
 
     common_helper = CommonHelper(browser)
     common_helper.enter_input(input_id="billing_first_name", data="Andrey")
